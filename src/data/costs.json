@@ -1,0 +1,231 @@
+{
+  "overview": {
+    "totalMonthlyCost": 24750.89,
+    "previousMonth": 22340.12,
+    "changePercentage": 10.8,
+    "budgetLimit": 30000,
+    "budgetUtilization": 82.5,
+    "costPerGB": 12.45,
+    "costPerQuery": 0.023
+  },
+  "breakdown": {
+    "compute": {
+      "cost": 14250.32,
+      "percentage": 57.6,
+      "trend": "up",
+      "details": [
+        {
+          "resource": "Data Processing Cluster",
+          "cost": 8750.20,
+          "usage": "720 hours",
+          "unitCost": "$12.15/hour"
+        },
+        {
+          "resource": "ML Training Instances",
+          "cost": 3200.45,
+          "usage": "145 hours",
+          "unitCost": "$22.07/hour"
+        },
+        {
+          "resource": "Query Execution",
+          "cost": 2299.67,
+          "usage": "98,450 queries",
+          "unitCost": "$0.023/query"
+        }
+      ]
+    },
+    "storage": {
+      "cost": 6890.45,
+      "percentage": 27.8,
+      "trend": "stable",
+      "details": [
+        {
+          "resource": "Primary Data Storage",
+          "cost": 4250.30,
+          "usage": "2.5 TB",
+          "unitCost": "$1,700/TB/month"
+        },
+        {
+          "resource": "Backup Storage",
+          "cost": 1890.15,
+          "usage": "5.2 TB",
+          "unitCost": "$363.49/TB/month"
+        },
+        {
+          "resource": "Archive Storage",
+          "cost": 750.00,
+          "usage": "15 TB",
+          "unitCost": "$50/TB/month"
+        }
+      ]
+    },
+    "networking": {
+      "cost": 2210.67,
+      "percentage": 8.9,
+      "trend": "up",
+      "details": [
+        {
+          "resource": "Data Transfer Out",
+          "cost": 1450.32,
+          "usage": "12.5 TB",
+          "unitCost": "$116.03/TB"
+        },
+        {
+          "resource": "VPN Gateway",
+          "cost": 540.25,
+          "usage": "720 hours",
+          "unitCost": "$0.75/hour"
+        },
+        {
+          "resource": "Load Balancer",
+          "cost": 220.10,
+          "usage": "720 hours",
+          "unitCost": "$0.31/hour"
+        }
+      ]
+    },
+    "tools": {
+      "cost": 1399.45,
+      "percentage": 5.7,
+      "trend": "stable",
+      "details": [
+        {
+          "resource": "Data Quality Platform",
+          "cost": 899.00,
+          "usage": "Enterprise Plan",
+          "unitCost": "$899/month"
+        },
+        {
+          "resource": "Monitoring Tools",
+          "cost": 299.95,
+          "usage": "Premium Plan",
+          "unitCost": "$299.95/month"
+        },
+        {
+          "resource": "Visualization Licenses",
+          "cost": 200.50,
+          "usage": "10 users",
+          "unitCost": "$20.05/user/month"
+        }
+      ]
+    }
+  },
+  "topExpensiveQueries": [
+    {
+      "id": "query_001",
+      "description": "Customer segmentation ML training",
+      "cost": 1250.45,
+      "executionTime": "4.5 hours",
+      "dataProcessed": "850 GB",
+      "frequency": "Weekly",
+      "owner": "ML Engineering Team",
+      "lastRun": "2024-01-14T02:00:00Z",
+      "optimization": "Consider using sampling for training data"
+    },
+    {
+      "id": "query_002",
+      "description": "Full customer analytics refresh",
+      "cost": 890.32,
+      "executionTime": "2.8 hours",
+      "dataProcessed": "1.2 TB",
+      "frequency": "Daily",
+      "owner": "Analytics Team",
+      "lastRun": "2024-01-15T03:00:00Z",
+      "optimization": "Implement incremental refresh strategy"
+    },
+    {
+      "id": "query_003",
+      "description": "Order history data export",
+      "cost": 675.21,
+      "executionTime": "1.5 hours",
+      "dataProcessed": "650 GB",
+      "frequency": "Monthly",
+      "owner": "Finance Team",
+      "lastRun": "2024-01-01T10:00:00Z",
+      "optimization": "Archive older data to reduce scan volume"
+    },
+    {
+      "id": "query_004",
+      "description": "Real-time dashboard refresh",
+      "cost": 445.67,
+      "executionTime": "0.3 hours",
+      "dataProcessed": "125 GB",
+      "frequency": "Hourly",
+      "owner": "BI Team",
+      "lastRun": "2024-01-15T11:00:00Z",
+      "optimization": "Use materialized views for frequently accessed data"
+    }
+  ],
+  "resourceUtilization": [
+    {
+      "resource": "Analytics Database",
+      "utilizationPercentage": 78.5,
+      "cost": 8750.20,
+      "recommendation": "Well utilized - consider scaling up for peak loads"
+    },
+    {
+      "resource": "Backup Storage",
+      "utilizationPercentage": 45.2,
+      "cost": 1890.15,
+      "recommendation": "Overprovisioned - review backup retention policies"
+    },
+    {
+      "resource": "ML Compute Cluster",
+      "utilizationPercentage": 92.3,
+      "cost": 3200.45,
+      "recommendation": "High utilization - consider auto-scaling or reservation"
+    },
+    {
+      "resource": "Data Transfer",
+      "utilizationPercentage": 67.8,
+      "cost": 1450.32,
+      "recommendation": "Moderate usage - monitor for optimization opportunities"
+    }
+  ],
+  "optimizationRecommendations": [
+    {
+      "id": "opt_001",
+      "title": "Implement Query Result Caching",
+      "description": "Cache frequently executed dashboard queries to reduce compute costs",
+      "estimatedSavings": 1250.00,
+      "priority": "high",
+      "effort": "medium",
+      "category": "compute"
+    },
+    {
+      "id": "opt_002",
+      "title": "Optimize Storage Partitioning",
+      "description": "Partition large tables by date to reduce scan volumes",
+      "estimatedSavings": 890.00,
+      "priority": "high",
+      "effort": "high",
+      "category": "storage"
+    },
+    {
+      "id": "opt_003",
+      "title": "Review Backup Retention Policy",
+      "description": "Reduce backup retention from 90 to 30 days for non-critical data",
+      "estimatedSavings": 630.05,
+      "priority": "medium",
+      "effort": "low",
+      "category": "storage"
+    },
+    {
+      "id": "opt_004",
+      "title": "Use Reserved Compute Instances",
+      "description": "Purchase reserved instances for predictable workloads",
+      "estimatedSavings": 2100.15,
+      "priority": "medium",
+      "effort": "low",
+      "category": "compute"
+    }
+  ],
+  "trends": [
+    { "month": "2023-08", "cost": 18500.32, "compute": 10250.15, "storage": 5890.45, "networking": 1560.32, "tools": 799.40 },
+    { "month": "2023-09", "cost": 19750.45, "compute": 11200.30, "storage": 6100.20, "networking": 1650.45, "tools": 799.50 },
+    { "month": "2023-10", "cost": 20150.67, "compute": 11890.25, "storage": 6250.15, "networking": 1210.87, "tools": 799.40 },
+    { "month": "2023-11", "cost": 21340.89, "compute": 12450.60, "storage": 6780.30, "networking": 1310.54, "tools": 799.45 },
+    { "month": "2023-12", "cost": 22340.12, "compute": 13100.45, "storage": 6890.25, "networking": 1550.12, "tools": 799.30 },
+    { "month": "2024-01", "cost": 24750.89, "compute": 14250.32, "storage": 6890.45, "networking": 2210.67, "tools": 1399.45 }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "overallScore": 89.2,
+  "totalTables": 156,
+  "totalColumns": 1247,
+  "totalRecords": 12500000,
+  "lastUpdated": "2024-01-15T11:45:00Z",
+  "metrics": {
+    "completeness": {
+      "score": 92.1,
+      "trend": "up",
+      "details": {
+        "totalFields": 1247,
+        "completeFields": 1149,
+        "incompleteFields": 98
+      }
+    },
+    "uniqueness": {
+      "score": 88.7,
+      "trend": "stable",
+      "details": {
+        "totalUniqueConstraints": 89,
+        "validConstraints": 79,
+        "violatedConstraints": 10
+      }
+    },
+    "validity": {
+      "score": 87.5,
+      "trend": "down",
+      "details": {
+        "totalValidationRules": 145,
+        "passingRules": 127,
+        "failingRules": 18
+      }
+    },
+    "freshness": {
+      "score": 89.8,
+      "trend": "up",
+      "details": {
+        "totalTables": 156,
+        "freshTables": 140,
+        "staleTables": 16
+      }
+    }
+  },
+  "databases": [
+    {
+      "name": "analytics_db",
+      "score": 94.2,
+      "trend": "up",
+      "recordCount": 5200000,
+      "schemas": [
+        {
+          "name": "customer_data",
+          "score": 96.1,
+          "recordCount": 2100000,
+          "tables": [
+            {
+              "name": "customers",
+              "score": 98.5,
+              "recordCount": 850000,
+              "completeness": 99.2,
+              "uniqueness": 97.8,
+              "validity": 98.5,
+              "freshness": 98.7,
+              "columns": [
+                {
+                  "name": "email",
+                  "type": "string",
+                  "nullPercentage": 0.8,
+                  "uniqueValues": 849320,
+                  "patternCompliance": 98.5,
+                  "issues": ["Invalid email format: 12,750 records"]
+                },
+                {
+                  "name": "first_name",
+                  "type": "string",
+                  "nullPercentage": 2.1,
+                  "uniqueValues": 45230,
+                  "patternCompliance": 95.2,
+                  "issues": ["Contains numbers: 8,460 records"]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "sales_db",
+      "score": 85.7,
+      "trend": "down",
+      "recordCount": 4300000,
+      "schemas": [
+        {
+          "name": "transactions",
+          "score": 87.2,
+          "recordCount": 3100000,
+          "tables": [
+            {
+              "name": "orders",
+              "score": 87.2,
+              "recordCount": 1200000,
+              "completeness": 89.4,
+              "uniqueness": 85.7,
+              "validity": 87.2,
+              "freshness": 86.5,
+              "columns": [
+                {
+                  "name": "amount",
+                  "type": "decimal",
+                  "nullPercentage": 1.2,
+                  "uniqueValues": 98765,
+                  "patternCompliance": 87.2,
+                  "issues": ["Negative amounts: 15,600 records", "Extreme outliers: 2,340 records"]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "inventory_db",
+      "score": 91.8,
+      "trend": "stable",
+      "recordCount": 3000000,
+      "schemas": [
+        {
+          "name": "products",
+          "score": 91.8,
+          "recordCount": 750000,
+          "tables": [
+            {
+              "name": "inventory",
+              "score": 99.8,
+              "recordCount": 125000,
+              "completeness": 99.9,
+              "uniqueness": 99.8,
+              "validity": 99.7,
+              "freshness": 99.8,
+              "columns": [
+                {
+                  "name": "sku",
+                  "type": "string",
+                  "nullPercentage": 0.0,
+                  "uniqueValues": 124975,
+                  "patternCompliance": 99.8,
+                  "issues": ["Duplicate SKUs: 25 records"]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "trends": [
+    { "date": "2024-01-08", "completeness": 91.2, "uniqueness": 87.9, "validity": 88.1, "freshness": 89.5 },
+    { "date": "2024-01-09", "completeness": 91.8, "uniqueness": 88.2, "validity": 87.8, "freshness": 89.7 },
+    { "date": "2024-01-10", "completeness": 92.1, "uniqueness": 88.5, "validity": 87.9, "freshness": 89.8 },
+    { "date": "2024-01-11", "completeness": 92.3, "uniqueness": 88.7, "validity": 87.6, "freshness": 89.9 },
+    { "date": "2024-01-12", "completeness": 92.0, "uniqueness": 88.8, "validity": 87.4, "freshness": 89.8 },
+    { "date": "2024-01-13", "completeness": 92.2, "uniqueness": 88.6, "validity": 87.2, "freshness": 89.7 },
+    { "date": "2024-01-14", "completeness": 92.1, "uniqueness": 88.7, "validity": 87.5, "freshness": 89.8 }
+  ]
+}

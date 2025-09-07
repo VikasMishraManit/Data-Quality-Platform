@@ -1,0 +1,205 @@
+{
+  "executions": [
+    {
+      "id": "exec_001",
+      "ruleId": "rule_001",
+      "ruleName": "Customer Email Validation",
+      "executionTime": "2024-01-15T10:30:00Z",
+      "duration": "00:02:45",
+      "status": "completed",
+      "result": "passed",
+      "score": 98.5,
+      "threshold": 95,
+      "recordsProcessed": 850000,
+      "recordsPassed": 837250,
+      "recordsFailed": 12750,
+      "executionMode": "scheduled",
+      "triggeredBy": "system",
+      "logs": [
+        {
+          "timestamp": "2024-01-15T10:30:00Z",
+          "level": "INFO",
+          "message": "Rule execution started"
+        },
+        {
+          "timestamp": "2024-01-15T10:31:15Z",
+          "level": "INFO",
+          "message": "Processing 850,000 customer records"
+        },
+        {
+          "timestamp": "2024-01-15T10:32:45Z",
+          "level": "WARN",
+          "message": "Found 12,750 invalid email formats"
+        },
+        {
+          "timestamp": "2024-01-15T10:32:45Z",
+          "level": "INFO",
+          "message": "Rule execution completed successfully"
+        }
+      ],
+      "metrics": {
+        "cpuUsage": "45%",
+        "memoryUsage": "2.1 GB",
+        "networkIO": "125 MB"
+      }
+    },
+    {
+      "id": "exec_002",
+      "ruleId": "rule_002",
+      "ruleName": "Order Amount Range Check",
+      "executionTime": "2024-01-15T11:00:00Z",
+      "duration": "00:01:20",
+      "status": "completed",
+      "result": "failed",
+      "score": 87.2,
+      "threshold": 90,
+      "recordsProcessed": 1200000,
+      "recordsPassed": 1046400,
+      "recordsFailed": 153600,
+      "executionMode": "scheduled",
+      "triggeredBy": "system",
+      "logs": [
+        {
+          "timestamp": "2024-01-15T11:00:00Z",
+          "level": "INFO",
+          "message": "Rule execution started"
+        },
+        {
+          "timestamp": "2024-01-15T11:01:10Z",
+          "level": "ERROR",
+          "message": "153,600 records failed range validation - score below threshold"
+        },
+        {
+          "timestamp": "2024-01-15T11:01:20Z",
+          "level": "INFO",
+          "message": "Rule execution completed with failures"
+        }
+      ],
+      "metrics": {
+        "cpuUsage": "38%",
+        "memoryUsage": "1.8 GB",
+        "networkIO": "89 MB"
+      }
+    },
+    {
+      "id": "exec_003",
+      "ruleId": "rule_003",
+      "ruleName": "Product SKU Uniqueness",
+      "executionTime": "2024-01-14T09:00:00Z",
+      "duration": "00:00:45",
+      "status": "completed",
+      "result": "passed",
+      "score": 99.8,
+      "threshold": 100,
+      "recordsProcessed": 125000,
+      "recordsPassed": 124975,
+      "recordsFailed": 25,
+      "executionMode": "scheduled",
+      "triggeredBy": "system",
+      "logs": [
+        {
+          "timestamp": "2024-01-14T09:00:00Z",
+          "level": "INFO",
+          "message": "Rule execution started"
+        },
+        {
+          "timestamp": "2024-01-14T09:00:30Z",
+          "level": "WARN",
+          "message": "Found 25 duplicate SKU entries"
+        },
+        {
+          "timestamp": "2024-01-14T09:00:45Z",
+          "level": "INFO",
+          "message": "Rule execution completed"
+        }
+      ],
+      "metrics": {
+        "cpuUsage": "22%",
+        "memoryUsage": "512 MB",
+        "networkIO": "45 MB"
+      }
+    },
+    {
+      "id": "exec_004",
+      "ruleId": "rule_001",
+      "ruleName": "Customer Email Validation",
+      "executionTime": "2024-01-14T10:30:00Z",
+      "duration": "00:02:38",
+      "status": "completed",
+      "result": "passed",
+      "score": 98.2,
+      "threshold": 95,
+      "recordsProcessed": 848500,
+      "recordsPassed": 833270,
+      "recordsFailed": 15230,
+      "executionMode": "scheduled",
+      "triggeredBy": "system",
+      "logs": [
+        {
+          "timestamp": "2024-01-14T10:30:00Z",
+          "level": "INFO",
+          "message": "Rule execution started"
+        },
+        {
+          "timestamp": "2024-01-14T10:32:38Z",
+          "level": "INFO",
+          "message": "Rule execution completed successfully"
+        }
+      ],
+      "metrics": {
+        "cpuUsage": "43%",
+        "memoryUsage": "2.0 GB",
+        "networkIO": "120 MB"
+      }
+    },
+    {
+      "id": "exec_005",
+      "ruleId": "rule_004",
+      "ruleName": "User Registration Completeness",
+      "executionTime": "2024-01-15T08:00:00Z",
+      "duration": "00:01:55",
+      "status": "completed",
+      "result": "passed",
+      "score": 92.1,
+      "threshold": 85,
+      "recordsProcessed": 450000,
+      "recordsPassed": 414450,
+      "recordsFailed": 35550,
+      "executionMode": "scheduled",
+      "triggeredBy": "system",
+      "logs": [
+        {
+          "timestamp": "2024-01-15T08:00:00Z",
+          "level": "INFO",
+          "message": "Rule execution started"
+        },
+        {
+          "timestamp": "2024-01-15T08:01:55Z",
+          "level": "INFO",
+          "message": "Rule execution completed successfully"
+        }
+      ],
+      "metrics": {
+        "cpuUsage": "35%",
+        "memoryUsage": "1.2 GB",
+        "networkIO": "78 MB"
+      }
+    }
+  ],
+  "summary": {
+    "totalExecutions": 5,
+    "successful": 4,
+    "failed": 1,
+    "avgDuration": "00:01:46",
+    "avgScore": 95.16,
+    "totalRecordsProcessed": 3467500,
+    "executionTrend": [
+      { "date": "2024-01-10", "executions": 8, "successRate": 87.5 },
+      { "date": "2024-01-11", "executions": 12, "successRate": 91.7 },
+      { "date": "2024-01-12", "executions": 10, "successRate": 90.0 },
+      { "date": "2024-01-13", "executions": 15, "successRate": 86.7 },
+      { "date": "2024-01-14", "executions": 11, "successRate": 90.9 },
+      { "date": "2024-01-15", "executions": 7, "successRate": 85.7 }
+    ]
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "incidents": [
+    {
+      "id": "INC-2024-001",
+      "title": "High Null Percentage in Customer Email Field",
+      "description": "Customer email field showing 15% null values, exceeding threshold of 5%",
+      "severity": "high",
+      "status": "open",
+      "priority": "P1",
+      "affectedAssets": [
+        {
+          "database": "analytics_db",
+          "schema": "customer_data",
+          "table": "customers",
+          "column": "email"
+        }
+      ],
+      "assignee": "Sarah Johnson",
+      "reporter": "System Alert",
+      "createdAt": "2024-01-15T09:15:00Z",
+      "updatedAt": "2024-01-15T10:30:00Z",
+      "slaTarget": "2024-01-16T09:15:00Z",
+      "impact": "Medium - Affects email marketing campaigns",
+      "rootCause": null,
+      "resolution": null,
+      "comments": [
+        {
+          "id": "c1",
+          "author": "Sarah Johnson",
+          "content": "Investigating the data source. Recent ETL changes might be the cause.",
+          "timestamp": "2024-01-15T10:30:00Z"
+        }
+      ],
+      "tags": ["data-quality", "customer-data", "email"],
+      "relatedRules": ["rule_001"]
+    },
+    {
+      "id": "INC-2024-002",
+      "title": "Duplicate SKUs Detected in Inventory",
+      "description": "Found 25 duplicate SKU entries in the inventory table",
+      "severity": "medium",
+      "status": "in_progress",
+      "priority": "P2",
+      "affectedAssets": [
+        {
+          "database": "inventory_db",
+          "schema": "products",
+          "table": "inventory",
+          "column": "sku"
+        }
+      ],
+      "assignee": "Lisa Wang",
+      "reporter": "Data Quality Rule",
+      "createdAt": "2024-01-14T14:20:00Z",
+      "updatedAt": "2024-01-15T11:00:00Z",
+      "slaTarget": "2024-01-17T14:20:00Z",
+      "impact": "Low - Minor inventory discrepancies",
+      "rootCause": "Manual data entry process allowing duplicates",
+      "resolution": "Implementing unique constraint and data cleanup process",
+      "comments": [
+        {
+          "id": "c2",
+          "author": "Lisa Wang",
+          "content": "Identified root cause. Working on data cleanup script.",
+          "timestamp": "2024-01-15T11:00:00Z"
+        },
+        {
+          "id": "c3",
+          "author": "Mike Chen",
+          "content": "Can help with the cleanup script. Will coordinate with inventory team.",
+          "timestamp": "2024-01-15T08:30:00Z"
+        }
+      ],
+      "tags": ["uniqueness", "inventory", "sku"],
+      "relatedRules": ["rule_003"]
+    },
+    {
+      "id": "INC-2024-003",
+      "title": "Order Amount Anomalies Detected",
+      "description": "Unusual spike in order amounts detected - 2,340 orders with values >$10,000",
+      "severity": "critical",
+      "status": "resolved",
+      "priority": "P0",
+      "affectedAssets": [
+        {
+          "database": "sales_db",
+          "schema": "transactions",
+          "table": "orders",
+          "column": "amount"
+        }
+      ],
+      "assignee": "Mike Chen",
+      "reporter": "Anomaly Detection System",
+      "createdAt": "2024-01-13T16:45:00Z",
+      "updatedAt": "2024-01-14T09:30:00Z",
+      "slaTarget": "2024-01-13T20:45:00Z",
+      "impact": "High - Potential financial reporting issues",
+      "rootCause": "Currency conversion error in payment processing system",
+      "resolution": "Fixed currency conversion logic, corrected affected records",
+      "comments": [
+        {
+          "id": "c4",
+          "author": "Mike Chen",
+          "content": "Currency conversion was applying EUR rates to USD transactions. Fixed and reprocessed.",
+          "timestamp": "2024-01-14T09:30:00Z"
+        }
+      ],
+      "tags": ["anomaly", "financial", "currency"],
+      "relatedRules": ["rule_002"]
+    },
+    {
+      "id": "INC-2024-004",
+      "title": "Stale Data in User Profiles",
+      "description": "User profile data hasn't been updated in 7 days, exceeding freshness SLA",
+      "severity": "low",
+      "status": "open",
+      "priority": "P3",
+      "affectedAssets": [
+        {
+          "database": "user_db",
+          "schema": "profiles",
+          "table": "users",
+          "column": "last_updated"
+        }
+      ],
+      "assignee": "Alex Rodriguez",
+      "reporter": "Freshness Monitor",
+      "createdAt": "2024-01-15T07:00:00Z",
+      "updatedAt": "2024-01-15T07:00:00Z",
+      "slaTarget": "2024-01-18T07:00:00Z",
+      "impact": "Low - Minor impact on personalization features",
+      "rootCause": null,
+      "resolution": null,
+      "comments": [],
+      "tags": ["freshness", "user-data", "profiles"],
+      "relatedRules": ["rule_004"]
+    }
+  ],
+  "stats": {
+    "total": 4,
+    "open": 2,
+    "inProgress": 1,
+    "resolved": 1,
+    "bySeverity": {
+      "critical": 1,
+      "high": 1,
+      "medium": 1,
+      "low": 1
+    },
+    "avgResolutionTime": "18.5 hours",
+    "slaCompliance": 75
+  }
+}

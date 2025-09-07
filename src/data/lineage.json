@@ -1,0 +1,294 @@
+{
+  "nodes": [
+    {
+      "id": "source_001",
+      "name": "Customer CRM",
+      "type": "source_system",
+      "category": "external",
+      "description": "Salesforce CRM system",
+      "owner": "Sales Team",
+      "tags": ["crm", "external", "customers"],
+      "position": { "x": 100, "y": 200 },
+      "metadata": {
+        "system": "Salesforce",
+        "refreshRate": "15 minutes",
+        "recordCount": 850000
+      }
+    },
+    {
+      "id": "source_002",
+      "name": "E-commerce Platform",
+      "type": "source_system",
+      "category": "external",
+      "description": "Shopify e-commerce platform",
+      "owner": "E-commerce Team",
+      "tags": ["ecommerce", "orders", "external"],
+      "position": { "x": 100, "y": 400 },
+      "metadata": {
+        "system": "Shopify",
+        "refreshRate": "5 minutes",
+        "recordCount": 1200000
+      }
+    },
+    {
+      "id": "etl_001",
+      "name": "Customer Data ETL",
+      "type": "transformation",
+      "category": "pipeline",
+      "description": "Data transformation and cleansing pipeline",
+      "owner": "Data Engineering",
+      "tags": ["etl", "transformation", "airflow"],
+      "position": { "x": 300, "y": 200 },
+      "metadata": {
+        "tool": "Apache Airflow",
+        "schedule": "Daily at 2 AM",
+        "lastRun": "2024-01-15T02:00:00Z"
+      }
+    },
+    {
+      "id": "etl_002",
+      "name": "Order Processing ETL",
+      "type": "transformation",
+      "category": "pipeline",
+      "description": "Order data processing and enrichment",
+      "owner": "Data Engineering",
+      "tags": ["etl", "orders", "real-time"],
+      "position": { "x": 300, "y": 400 },
+      "metadata": {
+        "tool": "Apache Kafka + Spark",
+        "schedule": "Real-time streaming",
+        "lastRun": "2024-01-15T11:45:00Z"
+      }
+    },
+    {
+      "id": "db_001",
+      "name": "Analytics Database",
+      "type": "database",
+      "category": "warehouse",
+      "description": "Primary analytics data warehouse",
+      "owner": "Data Team",
+      "tags": ["warehouse", "analytics", "postgresql"],
+      "position": { "x": 500, "y": 300 },
+      "metadata": {
+        "system": "PostgreSQL",
+        "size": "2.5 TB",
+        "tables": 45
+      }
+    },
+    {
+      "id": "table_001",
+      "name": "customers",
+      "type": "table",
+      "category": "core",
+      "description": "Customer master data table",
+      "owner": "Customer Success",
+      "tags": ["customers", "pii", "core"],
+      "position": { "x": 700, "y": 200 },
+      "metadata": {
+        "schema": "customer_data",
+        "recordCount": 850000,
+        "columns": 12
+      }
+    },
+    {
+      "id": "table_002",
+      "name": "orders",
+      "type": "table",
+      "category": "transactional",
+      "description": "Order transaction data",
+      "owner": "Sales Team",
+      "tags": ["orders", "transactions", "financial"],
+      "position": { "x": 700, "y": 400 },
+      "metadata": {
+        "schema": "transactions",
+        "recordCount": 1200000,
+        "columns": 15
+      }
+    },
+    {
+      "id": "table_003",
+      "name": "customer_metrics",
+      "type": "table",
+      "category": "derived",
+      "description": "Aggregated customer metrics and KPIs",
+      "owner": "Analytics Team",
+      "tags": ["metrics", "aggregated", "kpi"],
+      "position": { "x": 900, "y": 300 },
+      "metadata": {
+        "schema": "analytics",
+        "recordCount": 850000,
+        "columns": 8
+      }
+    },
+    {
+      "id": "dashboard_001",
+      "name": "Customer Analytics Dashboard",
+      "type": "dashboard",
+      "category": "visualization",
+      "description": "Executive customer analytics dashboard",
+      "owner": "Business Intelligence",
+      "tags": ["dashboard", "executive", "customer"],
+      "position": { "x": 1100, "y": 200 },
+      "metadata": {
+        "tool": "Tableau",
+        "users": 45,
+        "refreshRate": "Hourly"
+      }
+    },
+    {
+      "id": "report_001",
+      "name": "Monthly Sales Report",
+      "type": "report",
+      "category": "visualization",
+      "description": "Automated monthly sales performance report",
+      "owner": "Sales Operations",
+      "tags": ["report", "sales", "monthly"],
+      "position": { "x": 1100, "y": 400 },
+      "metadata": {
+        "tool": "Power BI",
+        "schedule": "Monthly",
+        "recipients": 25
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge_001",
+      "source": "source_001",
+      "target": "etl_001",
+      "type": "data_flow",
+      "description": "Customer data ingestion",
+      "metadata": {
+        "method": "API",
+        "frequency": "Daily",
+        "volume": "2.1 GB"
+      }
+    },
+    {
+      "id": "edge_002",
+      "source": "source_002",
+      "target": "etl_002",
+      "type": "data_flow",
+      "description": "Order data streaming",
+      "metadata": {
+        "method": "Webhook",
+        "frequency": "Real-time",
+        "volume": "500 MB/day"
+      }
+    },
+    {
+      "id": "edge_003",
+      "source": "etl_001",
+      "target": "db_001",
+      "type": "data_flow",
+      "description": "Processed customer data load",
+      "metadata": {
+        "method": "Direct Insert",
+        "frequency": "Daily",
+        "volume": "1.8 GB"
+      }
+    },
+    {
+      "id": "edge_004",
+      "source": "etl_002",
+      "target": "db_001",
+      "type": "data_flow",
+      "description": "Real-time order data load",
+      "metadata": {
+        "method": "Streaming Insert",
+        "frequency": "Continuous",
+        "volume": "50 MB/hour"
+      }
+    },
+    {
+      "id": "edge_005",
+      "source": "db_001",
+      "target": "table_001",
+      "type": "contains",
+      "description": "Customer table in analytics DB",
+      "metadata": {
+        "relationship": "contains"
+      }
+    },
+    {
+      "id": "edge_006",
+      "source": "db_001",
+      "target": "table_002",
+      "type": "contains",
+      "description": "Orders table in analytics DB",
+      "metadata": {
+        "relationship": "contains"
+      }
+    },
+    {
+      "id": "edge_007",
+      "source": "table_001",
+      "target": "table_003",
+      "type": "transformation",
+      "description": "Customer metrics aggregation",
+      "metadata": {
+        "method": "SQL Aggregation",
+        "frequency": "Hourly",
+        "transformationType": "aggregation"
+      }
+    },
+    {
+      "id": "edge_008",
+      "source": "table_002",
+      "target": "table_003",
+      "type": "transformation",
+      "description": "Order metrics aggregation",
+      "metadata": {
+        "method": "SQL Aggregation",
+        "frequency": "Hourly",
+        "transformationType": "aggregation"
+      }
+    },
+    {
+      "id": "edge_009",
+      "source": "table_001",
+      "target": "dashboard_001",
+      "type": "visualization",
+      "description": "Customer dashboard data feed",
+      "metadata": {
+        "method": "Direct Query",
+        "frequency": "Real-time",
+        "tool": "Tableau"
+      }
+    },
+    {
+      "id": "edge_010",
+      "source": "table_003",
+      "target": "dashboard_001",
+      "type": "visualization",
+      "description": "Metrics dashboard feed",
+      "metadata": {
+        "method": "Direct Query",
+        "frequency": "Real-time",
+        "tool": "Tableau"
+      }
+    },
+    {
+      "id": "edge_011",
+      "source": "table_002",
+      "target": "report_001",
+      "type": "visualization",
+      "description": "Sales report data source",
+      "metadata": {
+        "method": "Scheduled Extract",
+        "frequency": "Monthly",
+        "tool": "Power BI"
+      }
+    }
+  ],
+  "metadata": {
+    "totalNodes": 10,
+    "totalEdges": 11,
+    "sourceSystems": 2,
+    "transformations": 2,
+    "databases": 1,
+    "tables": 3,
+    "visualizations": 2,
+    "lastUpdated": "2024-01-15T11:45:00Z"
+  }
+}

@@ -1,0 +1,184 @@
+{
+  "anomalies": [
+    {
+      "id": "anom_001",
+      "title": "Unusual Spike in Order Volumes",
+      "description": "Order volume increased by 340% compared to typical Monday patterns",
+      "severity": "high",
+      "confidence": 0.92,
+      "detectedAt": "2024-01-15T10:15:00Z",
+      "status": "investigating",
+      "category": "volume_anomaly",
+      "affectedAsset": {
+        "database": "sales_db",
+        "schema": "transactions",
+        "table": "orders",
+        "metric": "record_count"
+      },
+      "metrics": {
+        "expected": 12500,
+        "actual": 55000,
+        "deviation": 340,
+        "threshold": 150
+      },
+      "timeWindow": "2024-01-15T09:00:00Z - 2024-01-15T11:00:00Z",
+      "possibleCauses": [
+        "Marketing campaign launch",
+        "System integration issue",
+        "Data pipeline duplication"
+      ],
+      "suggestedActions": [
+        "Check marketing campaign schedule",
+        "Verify ETL pipeline integrity",
+        "Review duplicate detection rules"
+      ],
+      "assignee": "Mike Chen",
+      "tags": ["volume", "orders", "marketing"]
+    },
+    {
+      "id": "anom_002",
+      "title": "Customer Registration Pattern Change",
+      "description": "Sudden drop in customer registrations during peak hours",
+      "severity": "medium",
+      "confidence": 0.87,
+      "detectedAt": "2024-01-15T08:30:00Z",
+      "status": "resolved",
+      "category": "pattern_anomaly",
+      "affectedAsset": {
+        "database": "analytics_db",
+        "schema": "customer_data",
+        "table": "customers",
+        "metric": "hourly_registrations"
+      },
+      "metrics": {
+        "expected": 850,
+        "actual": 120,
+        "deviation": -85.9,
+        "threshold": -50
+      },
+      "timeWindow": "2024-01-15T07:00:00Z - 2024-01-15T09:00:00Z",
+      "possibleCauses": [
+        "Website performance issues",
+        "Registration form bug",
+        "A/B test variant"
+      ],
+      "suggestedActions": [
+        "Check website performance metrics",
+        "Review recent code deployments",
+        "Validate registration form functionality"
+      ],
+      "resolution": "Website performance issue identified and resolved",
+      "resolvedAt": "2024-01-15T09:45:00Z",
+      "assignee": "Sarah Johnson",
+      "tags": ["registration", "website", "performance"]
+    },
+    {
+      "id": "anom_003",
+      "title": "Inventory Level Inconsistency",
+      "description": "Negative inventory values detected for multiple products",
+      "severity": "critical",
+      "confidence": 0.98,
+      "detectedAt": "2024-01-14T16:20:00Z",
+      "status": "in_progress",
+      "category": "data_quality_anomaly",
+      "affectedAsset": {
+        "database": "inventory_db",
+        "schema": "products",
+        "table": "inventory",
+        "metric": "stock_quantity"
+      },
+      "metrics": {
+        "expected": "> 0",
+        "actual": "-1500 to -50",
+        "affectedRecords": 45,
+        "totalRecords": 125000
+      },
+      "timeWindow": "2024-01-14T15:00:00Z - 2024-01-14T17:00:00Z",
+      "possibleCauses": [
+        "Inventory sync timing issue",
+        "Overselling in high-demand products",
+        "Data corruption during update"
+      ],
+      "suggestedActions": [
+        "Pause automatic reordering for affected products",
+        "Investigate order fulfillment process",
+        "Run data integrity check"
+      ],
+      "assignee": "Lisa Wang",
+      "tags": ["inventory", "data-integrity", "stock"]
+    },
+    {
+      "id": "anom_004",
+      "title": "Unusual Email Bounce Rate",
+      "description": "Email bounce rate increased to 25%, typically around 2-3%",
+      "severity": "medium",
+      "confidence": 0.89,
+      "detectedAt": "2024-01-15T06:45:00Z",
+      "status": "monitoring",
+      "category": "quality_anomaly",
+      "affectedAsset": {
+        "database": "analytics_db",
+        "schema": "customer_data",
+        "table": "customers",
+        "metric": "email_validity"
+      },
+      "metrics": {
+        "expected": 2.5,
+        "actual": 25.3,
+        "deviation": 912,
+        "threshold": 200
+      },
+      "timeWindow": "2024-01-15T00:00:00Z - 2024-01-15T08:00:00Z",
+      "possibleCauses": [
+        "Email provider policy changes",
+        "Bulk email list import with stale data",
+        "Domain reputation issues"
+      ],
+      "suggestedActions": [
+        "Review recent email campaigns",
+        "Check email provider status",
+        "Validate email list quality"
+      ],
+      "assignee": "Alex Rodriguez",
+      "tags": ["email", "marketing", "deliverability"]
+    }
+  ],
+  "mlModels": [
+    {
+      "id": "model_001",
+      "name": "Order Volume Predictor",
+      "type": "time_series_forecasting",
+      "target": "daily_order_count",
+      "accuracy": 0.94,
+      "lastTrained": "2024-01-10T12:00:00Z",
+      "status": "active",
+      "features": ["day_of_week", "season", "marketing_spend", "weather"],
+      "anomaliesDetected": 12,
+      "falsePositiveRate": 0.08
+    },
+    {
+      "id": "model_002",
+      "name": "Data Quality Scorer",
+      "type": "classification",
+      "target": "quality_score",
+      "accuracy": 0.91,
+      "lastTrained": "2024-01-12T14:30:00Z",
+      "status": "active",
+      "features": ["completeness", "uniqueness", "validity", "consistency"],
+      "anomaliesDetected": 8,
+      "falsePositiveRate": 0.12
+    }
+  ],
+  "insights": {
+    "totalAnomalies": 4,
+    "newToday": 2,
+    "resolved": 1,
+    "avgConfidence": 0.915,
+    "topCategories": ["volume_anomaly", "pattern_anomaly", "data_quality_anomaly"],
+    "impactAssessment": {
+      "high": 2,
+      "medium": 2,
+      "low": 0
+    }
+  }
+}

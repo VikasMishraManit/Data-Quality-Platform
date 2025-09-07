@@ -1,0 +1,170 @@
+{
+  "rules": [
+    {
+      "id": "rule_001",
+      "name": "Customer Email Validation",
+      "description": "Ensures all customer email addresses follow valid format",
+      "database": "analytics_db",
+      "schema": "customer_data",
+      "table": "customers",
+      "columns": ["email"],
+      "ruleType": "format_validation",
+      "status": "active",
+      "schedule": "daily",
+      "threshold": 95,
+      "currentScore": 98.5,
+      "trend": "up",
+      "lastRun": "2024-01-15T10:30:00Z",
+      "nextRun": "2024-01-16T10:30:00Z",
+      "executionCount": 45,
+      "failureCount": 2,
+      "createdBy": "Sarah Johnson",
+      "tags": ["validation", "customer", "pii"]
+    },
+    {
+      "id": "rule_002",
+      "name": "Order Amount Range Check",
+      "description": "Validates order amounts fall within expected business ranges",
+      "database": "sales_db",
+      "schema": "transactions",
+      "table": "orders",
+      "columns": ["amount", "currency"],
+      "ruleType": "range_validation",
+      "status": "active",
+      "schedule": "hourly",
+      "threshold": 90,
+      "currentScore": 87.2,
+      "trend": "down",
+      "lastRun": "2024-01-15T11:00:00Z",
+      "nextRun": "2024-01-15T12:00:00Z",
+      "executionCount": 120,
+      "failureCount": 8,
+      "createdBy": "Mike Chen",
+      "tags": ["validation", "financial", "orders"]
+    },
+    {
+      "id": "rule_003",
+      "name": "Product SKU Uniqueness",
+      "description": "Ensures no duplicate product SKUs exist in inventory",
+      "database": "inventory_db",
+      "schema": "products",
+      "table": "inventory",
+      "columns": ["sku"],
+      "ruleType": "uniqueness",
+      "status": "paused",
+      "schedule": "daily",
+      "threshold": 100,
+      "currentScore": 99.8,
+      "trend": "stable",
+      "lastRun": "2024-01-14T09:00:00Z",
+      "nextRun": null,
+      "executionCount": 30,
+      "failureCount": 1,
+      "createdBy": "Lisa Wang",
+      "tags": ["uniqueness", "inventory", "products"]
+    },
+    {
+      "id": "rule_004",
+      "name": "User Registration Completeness",
+      "description": "Checks that all required user profile fields are populated",
+      "database": "user_db",
+      "schema": "profiles",
+      "table": "users",
+      "columns": ["first_name", "last_name", "email", "phone"],
+      "ruleType": "completeness",
+      "status": "active",
+      "schedule": "daily",
+      "threshold": 85,
+      "currentScore": 92.1,
+      "trend": "up",
+      "lastRun": "2024-01-15T08:00:00Z",
+      "nextRun": "2024-01-16T08:00:00Z",
+      "executionCount": 60,
+      "failureCount": 5,
+      "createdBy": "Alex Rodriguez",
+      "tags": ["completeness", "user", "profiles"]
+    },
+    {
+      "id": "rule_005",
+      "name": "Transaction Date Consistency",
+      "description": "Validates transaction dates are not in the future and follow chronological order",
+      "database": "finance_db",
+      "schema": "accounting",
+      "table": "transactions",
+      "columns": ["transaction_date", "created_at"],
+      "ruleType": "consistency",
+      "status": "active",
+      "schedule": "continuous",
+      "threshold": 99,
+      "currentScore": 95.7,
+      "trend": "stable",
+      "lastRun": "2024-01-15T11:45:00Z",
+      "nextRun": "2024-01-15T12:00:00Z",
+      "executionCount": 450,
+      "failureCount": 12,
+      "createdBy": "David Kim",
+      "tags": ["consistency", "temporal", "finance"]
+    }
+  ],
+  "databases": [
+    {
+      "name": "analytics_db",
+      "schemas": [
+        {
+          "name": "customer_data",
+          "tables": [
+            {
+              "name": "customers",
+              "columns": ["id", "email", "first_name", "last_name", "created_at"]
+            },
+            {
+              "name": "customer_segments",
+              "columns": ["customer_id", "segment", "score", "updated_at"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "sales_db",
+      "schemas": [
+        {
+          "name": "transactions",
+          "tables": [
+            {
+              "name": "orders",
+              "columns": ["id", "customer_id", "amount", "currency", "status", "created_at"]
+            },
+            {
+              "name": "order_items",
+              "columns": ["order_id", "product_id", "quantity", "price"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "inventory_db",
+      "schemas": [
+        {
+          "name": "products",
+          "tables": [
+            {
+              "name": "inventory",
+              "columns": ["sku", "name", "category", "price", "stock_quantity"]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "ruleTypes": [
+    "format_validation",
+    "range_validation",
+    "uniqueness",
+    "completeness",
+    "consistency",
+    "freshness",
+    "referential_integrity"
+  ]
+}

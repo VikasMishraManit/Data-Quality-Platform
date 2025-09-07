@@ -1,0 +1,228 @@
+{
+  "dataSources": [
+    {
+      "id": "ds_001",
+      "name": "Analytics Database",
+      "type": "PostgreSQL",
+      "environment": "production",
+      "status": "connected",
+      "lastSynced": "2024-01-15T11:45:00Z",
+      "owner": "Data Engineering Team",
+      "description": "Primary analytics database containing customer and behavioral data",
+      "tags": ["analytics", "customer", "production"],
+      "connectionHealth": 98.5,
+      "schemas": [
+        {
+          "name": "customer_data",
+          "description": "Customer profiles and segmentation data",
+          "tableCount": 8,
+          "recordCount": 2100000,
+          "dataClassification": "PII",
+          "tables": [
+            {
+              "name": "customers",
+              "description": "Core customer profile information",
+              "recordCount": 850000,
+              "columnCount": 12,
+              "dataVolume": "2.1 GB",
+              "lastUpdated": "2024-01-15T11:30:00Z",
+              "owner": "Customer Success Team",
+              "tags": ["pii", "gdpr", "core"],
+              "qualityScore": 98.5,
+              "columns": [
+                {
+                  "name": "id",
+                  "type": "uuid",
+                  "description": "Unique customer identifier",
+                  "isPrimaryKey": true,
+                  "isNullable": false,
+                  "dataClassification": "identifier"
+                },
+                {
+                  "name": "email",
+                  "type": "varchar(255)",
+                  "description": "Customer email address",
+                  "isPrimaryKey": false,
+                  "isNullable": false,
+                  "dataClassification": "pii",
+                  "qualityIssues": ["format_validation"]
+                },
+                {
+                  "name": "first_name",
+                  "type": "varchar(100)",
+                  "description": "Customer first name",
+                  "isPrimaryKey": false,
+                  "isNullable": true,
+                  "dataClassification": "pii"
+                }
+              ]
+            },
+            {
+              "name": "customer_segments",
+              "description": "Customer segmentation and scoring",
+              "recordCount": 850000,
+              "columnCount": 6,
+              "dataVolume": "1.2 GB",
+              "lastUpdated": "2024-01-15T10:00:00Z",
+              "owner": "Marketing Team",
+              "tags": ["segmentation", "marketing"],
+              "qualityScore": 95.2
+            }
+          ]
+        },
+        {
+          "name": "behavioral_data",
+          "description": "User behavior and interaction tracking",
+          "tableCount": 5,
+          "recordCount": 15600000,
+          "dataClassification": "behavioral",
+          "tables": [
+            {
+              "name": "page_views",
+              "description": "Website page view tracking",
+              "recordCount": 12500000,
+              "columnCount": 8,
+              "dataVolume": "8.4 GB",
+              "lastUpdated": "2024-01-15T11:45:00Z",
+              "owner": "Analytics Team",
+              "tags": ["tracking", "web"],
+              "qualityScore": 92.1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds_002",
+      "name": "Sales Database",
+      "type": "MySQL",
+      "environment": "production",
+      "status": "connected",
+      "lastSynced": "2024-01-15T11:40:00Z",
+      "owner": "Sales Operations Team",
+      "description": "Transactional data for orders, payments, and revenue tracking",
+      "tags": ["sales", "transactions", "revenue"],
+      "connectionHealth": 96.2,
+      "schemas": [
+        {
+          "name": "transactions",
+          "description": "Order and payment transaction data",
+          "tableCount": 6,
+          "recordCount": 3100000,
+          "dataClassification": "financial",
+          "tables": [
+            {
+              "name": "orders",
+              "description": "Customer order records",
+              "recordCount": 1200000,
+              "columnCount": 15,
+              "dataVolume": "5.2 GB",
+              "lastUpdated": "2024-01-15T11:35:00Z",
+              "owner": "Sales Team",
+              "tags": ["orders", "financial"],
+              "qualityScore": 87.2,
+              "columns": [
+                {
+                  "name": "id",
+                  "type": "bigint",
+                  "description": "Unique order identifier",
+                  "isPrimaryKey": true,
+                  "isNullable": false,
+                  "dataClassification": "identifier"
+                },
+                {
+                  "name": "amount",
+                  "type": "decimal(10,2)",
+                  "description": "Order total amount",
+                  "isPrimaryKey": false,
+                  "isNullable": false,
+                  "dataClassification": "financial",
+                  "qualityIssues": ["range_validation", "anomaly_detection"]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds_003",
+      "name": "Inventory Database",
+      "type": "PostgreSQL",
+      "environment": "production",
+      "status": "connected",
+      "lastSynced": "2024-01-15T11:30:00Z",
+      "owner": "Operations Team",
+      "description": "Product catalog and inventory management system",
+      "tags": ["inventory", "products", "catalog"],
+      "connectionHealth": 99.1,
+      "schemas": [
+        {
+          "name": "products",
+          "description": "Product catalog and inventory tracking",
+          "tableCount": 4,
+          "recordCount": 750000,
+          "dataClassification": "business",
+          "tables": [
+            {
+              "name": "inventory",
+              "description": "Current product inventory levels",
+              "recordCount": 125000,
+              "columnCount": 10,
+              "dataVolume": "890 MB",
+              "lastUpdated": "2024-01-15T11:00:00Z",
+              "owner": "Inventory Team",
+              "tags": ["inventory", "stock"],
+              "qualityScore": 99.8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds_004",
+      "name": "User Database",
+      "type": "MongoDB",
+      "environment": "production",
+      "status": "warning",
+      "lastSynced": "2024-01-15T08:15:00Z",
+      "owner": "Engineering Team",
+      "description": "User authentication and profile management",
+      "tags": ["users", "auth", "profiles"],
+      "connectionHealth": 87.3,
+      "schemas": [
+        {
+          "name": "profiles",
+          "description": "User profile and preference data",
+          "tableCount": 3,
+          "recordCount": 950000,
+          "dataClassification": "pii",
+          "tables": [
+            {
+              "name": "users",
+              "description": "User account and profile information",
+              "recordCount": 450000,
+              "columnCount": 18,
+              "dataVolume": "1.8 GB",
+              "lastUpdated": "2024-01-08T15:20:00Z",
+              "owner": "Product Team",
+              "tags": ["users", "pii"],
+              "qualityScore": 92.1,
+              "qualityIssues": ["freshness"]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "totalDataSources": 4,
+    "connectedSources": 3,
+    "warningSources": 1,
+    "totalTables": 156,
+    "totalRecords": 12500000,
+    "totalDataVolume": "24.8 GB",
+    "avgConnectionHealth": 95.3,
+    "lastSyncTime": "2024-01-15T11:45:00Z"
+  }
+}
